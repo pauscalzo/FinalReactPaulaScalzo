@@ -1,0 +1,9 @@
+.welcome {
+    text-align: center;
+    margin-top: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #a34f87;
+    text-decoration: underline;
+    font-style: italic;
+    letter-spacing: 4px;
+}
