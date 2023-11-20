@@ -1,4 +1,5 @@
 import { CartWidget } from "../CartWidget/CartWidget"
+import { Link } from "react-router-dom"
 import styles from "./NavBar.module.css";
 
 export const NavBar = () => {
@@ -10,30 +11,42 @@ export const NavBar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className={styles.logo}>
-                        <a className="navbar-brand" href="#">
-                            <img src="/img/acococho.png" alt=""/>
-                        </a>
+                        <Link to="/">
+                            <div className="navbar-brand" href="#">
+                                <img src="/img/acococho.png" alt=""/>
+                            </div>
+                        </Link>
                     </div>
                     
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">  
                         <ul className="navbar-nav justify-content-center">
-                            <li className="nav-item px-2">
-                                <a className="nav-link active" aria-current="page" href="#">LEGO</a>
+                        <Link to="/category/Lego">
+                            <li className="nav-item px-2 text-dark-emphasis">
+                                LEGO
                             </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#">PLAYMOVIL</a>
+                        </Link>
+                        <Link to="/category/Playmovil">
+                            <li className="nav-item px-2 text-dark-emphasis">
+                                PLAYMOVIL
                             </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#">BARBIE</a>
+                        </Link>
+                        <Link to="/category/Barbies">
+                            <li className="nav-item px-2 text-dark-emphasis">
+                                BARBIE
                             </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#">VIDEOJUEGOS</a>
+                        </Link>
+                        <Link to="/category/Play-Doh">
+                            <li className="nav-item px-2 text-dark-emphasis">
+                                PLAY DOH
                             </li>
+                        </Link>
                         </ul> 
                     </div>
-                    <CartWidget/>
+                    <Link to="/Cart">
+                        <CartWidget/>
+                    </Link>
                 </div>
             </nav>
         </>
-    )
-}
+    );
+};
