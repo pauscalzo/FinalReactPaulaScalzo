@@ -1,5 +1,5 @@
-import { Button } from "../Button/Button"
-import { Link } from "react-router-dom"
+import { Button } from "../Button/Button";
+import { Link } from "react-router-dom";
 
 
 export const Item = ({id, name, img}) => {

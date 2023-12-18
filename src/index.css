@@ -17,3 +17,11 @@ a {
 
 }
 
+.notShow{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+

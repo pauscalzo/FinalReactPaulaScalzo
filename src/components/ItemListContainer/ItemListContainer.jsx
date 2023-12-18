@@ -1,43 +1,26 @@
-import { useEffect, useState } from "react"
-import { getProducts } from "../../asyncMock"
-import { ItemList } from "../ItemList/ItemList"
-import { Footer } from "../Footer/Footer"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect } from "react";
+import { ItemList } from "../ItemList/ItemList";
+import { Footer } from "../Footer/Footer";
+import { useParams } from "react-router-dom";
+import { FirebaseContext } from "../../context/FirebaseContext";
+
 
 export const ItemListContainer = () => {
     const { category } = useParams();
-    const [products, setProducts] = useState ([]);
-    const [isLoading, setIsLoading] = useState (true);
-
-    useEffect(() => {
-        setIsLoading(true); 
-        getProducts()
-            .then((resp) => {
-                if (category) {
-                    const Filter = resp.filter((product) => product.category === category); 
-                    if (Filter.length > 0){
-                    setProducts(Filter);
-                    } else {
-                    setProducts(resp);
-                    }
-                } else {
-                setProducts(resp);
-                }
-                setIsLoading(false);
-                })
-            .catch((error) => console.log(error));
-        }, [category]); 
+    const { products, getProductsDB, isLoading } = useContext(FirebaseContext);
     
-        return (
-            <>
-                <div className="container text-center">
-                    <div className="row align-items-center pt-4">
-                        <div className="col">   
-                            { isLoading ? <img src="/img/giphy.gif" alt="" /> : < ItemList products={products}/> }    
-                            <Footer />
-                        </div>
-                    </div>
+    useEffect(() => {
+        getProductsDB(category)
+    }, [category]); 
+    
+    return (
+        <div className="container text-center">
+            <div className="row align-items-center pt-4">
+                <div className="col">   
+                    { isLoading ? <img src="/img/giphy.gif" alt="" /> : < ItemList products={products}/> }    
+                    <Footer />
                 </div>
-            </>
-        );
+            </div>
+        </div>
+    );
 };

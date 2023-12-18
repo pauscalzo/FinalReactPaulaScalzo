@@ -1,10 +1,13 @@
 import { CiShoppingCart } from "react-icons/ci";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 export const CartWidget = () => {
+    const { totalQuantity } = useContext(CartContext);
     return (
         <div className="d-flex">
             <CiShoppingCart size={40}/>
-            <p>0</p>
+            <p>{ totalQuantity }</p>
         </div>
-    )
-}
+    );
+};
